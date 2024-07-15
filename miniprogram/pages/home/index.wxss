@@ -1,0 +1,38 @@
+/* pages/home/index.wxss */
+page {
+  height: 100%;
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.l-page-content-scroll {
+  box-sizing: border-box;
+  height: calc(100vh - (env(safe-area-inset-bottom) + 190rpx));
+}
+
+.l-page-content {
+  padding: 20rpx;
+
+}
+
+page .external-class,
+.t-grid {
+  border-radius: 15rpx;
+}
+
+.t-swiper,
+.t-notice-bar,
+.t-grid {
+  margin-bottom: 20rpx;
+}
+
+.l-video {
+  border-radius: 15rpx;
+  background-color: #fff;
+}
+
+page video {
+  width: 100%;
+  border-radius: 15rpx;
+}

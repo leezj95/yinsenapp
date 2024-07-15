@@ -1,0 +1,29 @@
+<view class="goods-head">
+  <t-swiper height="500rpx" navigation="{{ { type: 'dots' } }}" list="{{swiperList}}" image-props="{{ {mode: 'aspectFit'} }}">
+  </t-swiper>
+  <view class="goods-head__name">{{name}}</view>
+</view>
+
+<view class="goods-info">
+  <t-sticky>
+    <t-tabs value="{{tabActive}}" theme="tag" bind:change="onTabsChange">
+      <t-tab-panel label="图文详情" value="0" />
+      <t-tab-panel label="商品参数" value="1" />
+    </t-tabs>
+  </t-sticky>
+  <view wx:if="{{tabActive == 0}}" class="goods-info__1">
+    <t-image src="{{imgDetail}}" mode="widthFix" />
+  </view>
+  <view wx:if="{{tabActive == 1}}" class="goods-info__2">
+    <view class="table">
+      <view class="tr" wx:for="{{goodsInfo}}" wx:key="index">
+        <view class="td">
+          <view class="td__val">{{item.label}}</view>
+        </view>
+        <view class="td">
+          <view class="td__val">{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

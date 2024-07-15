@@ -1,0 +1,27 @@
+<!-- 顶部内容 -->
+<search-bar id="search-val" bind:search="onSearchVal" />
+<!-- 主体内容 -->
+<view class="category-content">
+  <!-- 左侧内容 -->
+  <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
+    <t-side-bar-item wx:for="{{sideBarList}}" wx:key="index" value="{{item._id}}" label="{{item.name}}" />
+  </t-side-bar>
+
+  <!-- 右侧内容 -->
+  <scroll-view class="content" scroll-y scroll-with-animation scroll-top="{{scrollTop}}">
+    <view wx:for="{{pageContent}}" wx:key="index" class="content-cargo">
+      <view class="content-title" data-value="{{item.value}}" bind:tap="onClickToGoodList">
+        <text>{{item.title}}</text>
+        <t-icon name="chevron-right" size="48rpx" />
+      </view>
+      <t-grid column="{{3}}" border="{{false}}">
+        <block wx:for="{{item.items}}" wx:key="subIndex" wx:for-index="subIndex" wx:for-item="subItem">
+          <t-grid-item text="{{subItem.name}}" image="{{subItem.image}}" image-props="{{ imgProp }}" data-value="{{subItem.value}}" bind:tap="onClickToGoodList">
+          </t-grid-item>
+        </block>
+        <t-divider content="{{index === pageContent.length -1 ? '已到底' : ''}}" />
+      </t-grid>
+    </view>
+    <t-loading loading="{{loading}}" theme="spinner" size="28rpx" text="加载中..." inheritColor />
+  </scroll-view>
+</view>

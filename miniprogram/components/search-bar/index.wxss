@@ -1,0 +1,33 @@
+/* components/search-bar/index.wxss */
+
+/** 最外层盒子 */
+.l-search-bar-box {
+  background-color: var(--themeColor);
+  padding: 0 0 20rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.l-search-wrap {
+  flex: 1;
+  font-size: 16px;
+  background-color: #fff;
+  padding: 0 20rpx;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.l-search-text {
+  width: 110rpx;
+  text-align: center;
+}
+
+.l-search-icon {
+  margin-right: 5rpx
+}
+
+.l-search-ipt {
+  flex: 1;
+  height: 70rpx !important;
+}

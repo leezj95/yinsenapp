@@ -1,0 +1,116 @@
+/** 上圆角 */
+.b-top-radius {
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+}
+
+/** 隐藏滚动条显示 */
+scroll-view ::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page_content-box {
+  height: calc(100% - (env(safe-area-inset-bottom) + 85px));
+  background-color: #fff;
+  padding: 20rpx 24rpx;
+  box-sizing: border-box;
+}
+
+.goods-list-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+/** 商品卡片样式 */
+.goods-card {
+  box-sizing: border-box;
+  font-size: 24rpx;
+  border-radius: 0 0 16rpx 16rpx;
+  border-bottom: none;
+}
+
+.goods-card__main {
+  position: relative;
+  display: flex;
+  line-height: 1;
+  padding: 0;
+  background: transparent;
+  width: 342rpx;
+  border-radius: 0 0 16rpx 16rpx;
+  margin-bottom: 16rpx;
+  flex-direction: column;
+}
+
+.goods-card__thumb {
+  flex-shrink: 0;
+  position: relative;
+  width: 342rpx;
+  height: 342rpx;
+}
+
+.goods-card__thumb .t-image--shape-square {
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+}
+
+
+.goods-card__body {
+  display: flex;
+  background: rgb(245, 245, 245);
+  border-radius: 0 0 16rpx 16rpx;
+  padding: 16rpx;
+  padding-bottom: 10rpx;
+  flex-direction: column;
+}
+
+.goods-card__title {
+  flex-shrink: 0;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 400;
+  display: -webkit-box;
+  height: 72rpx;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 36rpx;
+}
+
+.goods-card__tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 8rpx 0 0 0;
+}
+
+
+.t-tag {
+  margin-right: 10rpx;
+}
+
+/** 筛选样式 */
+.t-side-bar-item--active,
+.t-tree-select__item--active {
+  font-weight: 500 !important;
+}
+
+.dropdown-item-fl .t-dropdown-item__scroll {
+  display: none;
+}
+
+
+
+.t-empty__description {
+  margin-top: 0 !important;
+  color: #666 !important;
+}

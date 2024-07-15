@@ -1,0 +1,40 @@
+<view class="theme-bg">
+  <search-bar id="search-val" bind:search="onSearchVal" />
+  <t-dropdown-menu t-class="b-top-radius" arrow-icon="chevron-down-s">
+    <t-dropdown-item id="dropdown-prod" label="{{prod.label}}">
+      <t-radio-group icon="line" placement="right" value="{{prod.value}}" options="{{prod.options}}" data-key="prod" bind:change="onChangeRadio" />
+    </t-dropdown-item>
+    <t-dropdown-item id="dropdown-categ" class="dropdown-item-fl" label="{{categ.label}}" value="{{categ.value}}" multiple bind:confirm="onConfirmCateg" bind:reset="onResetCateg">
+      <t-tree-select keys="{{ {label: 'name'} }}" options="{{categ.options}}" value="{{categ.value}}" bind:change="onChangeTree" />
+    </t-dropdown-item>
+    <t-dropdown-item id="dropdown-brand" label="{{brand.label}}">
+      <t-radio-group icon="line" placement="right" value="{{brand.value}}" options="{{brand.options}}" data-key="brand" bind:change="onChangeRadio" />
+    </t-dropdown-item>
+  </t-dropdown-menu>
+</view>
+
+<scroll-view class="page_content-box" scroll-y bind:scrolltolower="onScrolltolower">
+  <view class="goods-list-wrap">
+    <view class="goods-card" wx:for="{{goodsList}}" wx:key="index" data-id="{{item._id}}" bind:tap="onClickToDetail">
+      <view class="goods-card__main">
+        <view class="goods-card__thumb">
+          <t-image src="{{item.swiper[0]}}" width="100%" height="100%" mode="aspectFit" />
+        </view>
+        <view class="goods-card__body">
+          <view class="goods-card__title">{{ index + 1 + "、" + item.name}}</view>
+          <view class="goods-card__tags">
+            <t-tag wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag" variant="outline" theme="warning" shape="round">{{tag}}</t-tag>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <t-loading loading="{{loading}}" theme="spinner" size="28rpx" text="加载中..." inheritColor />
+  <t-divider wx:if="{{goodsList.length && !loading}}" content="{{finishedText}}" />
+
+
+  <t-empty wx:if="{{!goodsList.length && !loading}}" description="未查询到商品数据！">
+    <image slot="image" src="/images/empty.png" mode="aspectFit" />
+  </t-empty>
+</scroll-view>

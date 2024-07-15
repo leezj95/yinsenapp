@@ -1,0 +1,28 @@
+<view class="user-center-card">
+  <view class="user-center-card__header">
+    <open-data class="user-center-card__header__avatar" type="userAvatarUrl"></open-data>
+    <open-data class="user-center-card__header__name" type="userNickName" lang="zh_CN"></open-data>
+  </view>
+</view>
+
+<view class="content-wrapper">
+  <view class="cell-box">
+    <t-cell-group>
+      <t-cell title="客服热线" bordered="{{false}}" bind:click="onClickCell" t-class="t-cell-padding" t-class-note="order-group-note" t-class-left="order-group__left">
+        <t-icon name="service" size="48rpx" slot="note" />
+      </t-cell>
+    </t-cell-group>
+  </view>
+</view>
+<view class="footer__version" wx:if="{{versionNo !== ''}}">当前版本 {{versionNo}}</view>
+<t-popup visible="{{showMakePhone}}" placement="bottom" bind:visible-change="closeMakePhone" data-index="2">
+  <view class="popup-content">
+    <view class="popup-title border-bottom-1px">
+      服务时间: 每周一至周五 9:00-12:00 14:00-18:00
+    </view>
+    <view class="popup-phone border-bottom-1px" bind:tap="call">电话客服</view>
+    <button class="popup-phone border-bottom-1px online" open-type="contact" style="width: 100%;">在线客服</button>
+    <view class="popup-close" bind:tap="closeMakePhone">取消</view>
+  </view>
+</t-popup>
+<t-toast id="t-toast" />

@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "usingComponents": {
+    "search-bar": "/components/search-bar/index",
+    "t-sticky": "tdesign-miniprogram/sticky/sticky",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-tree-select": "tdesign-miniprogram/tree-select/tree-select",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-empty": "tdesign-miniprogram/empty/empty",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  }
+}

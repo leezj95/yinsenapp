@@ -1,0 +1,7 @@
+<view class="l-search-bar-box">
+  <view class="l-search-wrap">
+    <t-icon class="l-search-icon" name="search" color="#666" size="20" />
+    <input class="l-search-ipt" type="text" value="{{value}}" placeholder="请输入关键词搜索" confirm-type="search" bind:confirm='onClickSearch' bind:change="onChange" />
+  </view>
+  <view class="l-search-text" bind:tap="onClickSearch">搜索</view>
+</view>

@@ -1,0 +1,10 @@
+page {
+  --themeColor: #f2f3ff;
+  --themeFontColor333: #333;
+  --themeFontColor666: #666;
+  --margin20: 20rpx;
+}
+
+.theme-bg {
+  background-color: var(--themeColor);
+}
