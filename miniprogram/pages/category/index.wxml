@@ -22,9 +22,8 @@
         <t-divider content="{{index === pageContent.length -1 ? '已到底' : ''}}" />
       </t-grid>
     </view>
-    <t-empty wx:if="{{!pageContent.length && !loading}}" description="未查询对应数据！">
-      <image slot="image" src="/images/empty.png" mode="aspectFit" />
-    </t-empty>
+    <t-empty wx:if="{{!pageContent.length && !loading}}" description="未查询对应数据！" />
     <t-loading loading="{{loading}}" theme="spinner" size="28rpx" text="加载中..." inheritColor />
+
   </scroll-view>
 </view>
