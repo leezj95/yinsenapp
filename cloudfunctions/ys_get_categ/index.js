@@ -11,5 +11,9 @@ exports.main = async (event, context) => {
   const p_id = event.pid;
   const level = event.level;
   const value = event.value;
+  const limit = event.limit;
+  if (limit) {
+    return await db.collection('goods_categ_list').where({ level: db.RegExp({ regexp: level }), value, p_id }).limit(limit).get()
+  }
   return await db.collection('goods_categ_list').where({ level: db.RegExp({ regexp: level }), value, p_id }).get()
 }

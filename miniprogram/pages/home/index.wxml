@@ -9,7 +9,7 @@
           <t-grid-item image="{{item.image}}" text="{{item.name}}" image-props="{{ {shape: 'circle'} }}" url="/pages/goods/list/index?categ={{item.value}}" />
         </block>
       </t-grid>
-      <video src="{{video}}"></video>
+      <!-- <video src="{{video}}"></video> -->
     </view>
   </scroll-view>
 </view>

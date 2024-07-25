@@ -17,6 +17,8 @@ Page({
     wx.cloud.callFunction({ name: "ys_get_categ_page_data", data: { categID } }).then(res => {
       if (res.result.data && res.result.data.length) {
         that.setData({ pageContent: res.result.data, loading: false })
+      } else {
+        that.setData({ loading: false, pageContent: [] })
       }
     })
   },

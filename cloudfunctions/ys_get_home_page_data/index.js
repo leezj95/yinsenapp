@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   let categList = [];
   let noticeList = [];
   let video = "";
-  await cloud.callFunction({ name: "ys_get_categ", data: { level: "L1" } }).then(res => {
+  await cloud.callFunction({ name: "ys_get_categ", data: { level: "L1", limit: 8 } }).then(res => {
     if (res.result.data && res.result.data.length) {
       categList = res.result.data
     }

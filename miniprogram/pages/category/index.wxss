@@ -28,6 +28,10 @@ page {
   color: var(--td-side-bar-active-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9))) !important;
 }
 
+.t-side-bar-item {
+  white-space: nowrap;
+}
+
 .content {
   flex: 1;
   transition: transform 0.3s ease;
