@@ -1,0 +1,32 @@
+/* pages/sys/add-category/index.wxss */
+
+.t-radio-group-wap {
+  padding: 30rpx 30rpx 0;
+}
+
+.t-radio-wap {
+  margin-right: 20rpx;
+}
+
+.button-example {
+  margin: 32rpx;
+}
+
+.t-radio-box, .t-ipt-box {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+}
+
+.t-label {
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+.t-ipt-box {
+  text-align: right;
+  border-bottom: 1px solid #e7e7e7;
+}
+.t-ipt-box input {
+  flex: 1;
+}

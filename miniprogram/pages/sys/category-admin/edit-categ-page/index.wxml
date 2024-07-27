@@ -1,0 +1,51 @@
+<!--pages/sys/category-admin/edit-categ-page/index.wxml-->
+<form bindreset="cleanInput">
+  <view class="t-ipt-box">
+    <view class="flex">
+      <text class="t-label">标题名称</text>
+      <input vlaue="{{title}}" placeholder="请输入(必填)" data-value="title" bindchange="changeIptName" />
+    </view>
+    <view class="t-ipt-sub flex" data-value="assCateg" bindtap="openPicker">
+      <t-icon name="attach" size="28rpx" />
+      <text>{{assCateg.name}}</text>
+    </view>
+  </view>
+
+
+  <view class="t-sub-box">
+    <view class="tit">子集分类</view>
+    <view class="t-sub-item" wx:for="{{subItems}}" wx:key="index">
+      <t-upload class="upload" disabled max="{{1}}" files="{{[item.file]}}" />
+      <view class="t-sub-item-r">
+        <view>{{item.label}}</view>
+        <view class="t-ipt-sub flex">
+          <t-icon name="attach" size="28rpx" />
+          <text>{{item.assCateg.name}}</text>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="t-uplaod-box">
+      <t-upload mediaType="{{['image']}}" max="{{1}}" files="{{spare.files}}" bind:add="cloudFile" bind:remove="removeCloudFile" />
+      <view class="t-ms-warp">
+        <input placeholder="请输入(必填)" data-value="spare.label" bindchange="changeIptName" />
+        <view class="t-ipt-sub flex" data-value="spare.assCateg" bindtap="openPicker">
+          <t-icon name="attach" size="28rpx" />
+          <text>{{spare.assCateg.name}}</text>
+        </view>
+      </view>
+      <button class="add" bindtap="clickAdd">添加</button>
+    </view>
+  </view>
+
+  <view class="button-example">
+    <t-button theme="primary" size="large" block bindtap="submit" loading="{{loading}}" data-value="title">提交保存</t-button>
+  </view>
+
+  <t-picker visible="{{visible}}" value="{{[assCateg._id]}}" keys="{{ {label: 'name', value: '_id'} }}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
+    <t-picker-item options="{{options}}" />
+  </t-picker>
+
+  <t-toast id="t-toast" />
+</form>

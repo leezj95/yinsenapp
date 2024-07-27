@@ -1,0 +1,29 @@
+<form bindreset="cleanInput">
+
+  <view class="t-radio-box">
+    <text class="t-label">添加层级</text>
+    <t-radio-group value="{{level}}" bind:change="onChangeLevel">
+      <t-radio class="t-radio-wap" block="{{false}}" label="一级" value="{{0}}" />
+      <t-radio class="t-radio-wap" block="{{false}}" label="二级" value="{{1}}" />
+      <t-radio class="t-radio-wap" block="{{false}}" label="三级" value="{{2}}" />
+    </t-radio-group>
+  </view>
+
+  <t-cell title="父级分类" hover arrow note="{{parentCategory.name}}" bindtap="openPicker" />
+
+  <view class="t-ipt-box">
+    <text class="t-label">分类名称</text>
+    <input vlaue="{{category}}" placeholder="请输入(必填)" bindchange="changeCategory" />
+  </view>
+
+
+  <view class="button-example">
+    <t-button theme="primary" size="large" block bindtap="submit" loading="{{loading}}" type="reset">提交保存</t-button>
+  </view>
+
+  <t-picker visible="{{visible}}" value="{{[parentCategory.value]}}" keys="{{ {label: 'name'} }}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
+    <t-picker-item options="{{options}}" />
+  </t-picker>
+
+  <t-toast id="t-toast" />
+</form>

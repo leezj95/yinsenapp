@@ -1,0 +1,84 @@
+/* pages/sys/category-admin/edit-categ-page/index.wxss */
+.button-example {
+  margin: 32rpx;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.t-ipt-box {
+  padding: 18px;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.t-ipt-sub {
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: left;
+}
+
+.t-label {
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+.t-ipt-sub {
+  color: #a1a0a0;
+}
+
+.t-ipt-box {
+  text-align: right;
+  /* border-bottom: 1px solid #e7e7e7; */
+}
+.t-ipt-box input {
+  flex: 1;
+}
+
+.t-sub-box {
+  padding: 30rpx;
+}
+
+.t-sub-box .tit {
+  font-size: 15px;
+  color: #4d4c4c;
+  margin-bottom: 10px;
+}
+
+.t-sub-item {
+  position: relative;
+  margin: 10px 0;
+}
+
+.t-sub-item-r {
+  position: absolute;
+  left: 100px;
+  top: 20rpx;
+}
+
+.t-uplaod-box {
+  position: relative;
+}
+.t-ms-warp {
+  position: absolute;
+  left: 100px;
+  top: 20rpx;
+}
+
+.add {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px !important;
+  height: 100%;
+  line-height: 70px;
+  background-color: #2173f7;
+  color: #fff;
+  padding: 0;
+  font-size: 12px;
+}
+
+.upload .t-upload__close-btn {
+  display: none;
+}
