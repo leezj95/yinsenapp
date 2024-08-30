@@ -1,4 +1,6 @@
-<view class="l-page-box">
+<view>首页</view>
+
+<!-- <view class="l-page-box">
   <search-bar id="search-val" bind:search="onSearchVal" />
   <scroll-view class="l-page-content-scroll" scroll-y>
     <view class="l-page-content">
@@ -9,7 +11,6 @@
           <t-grid-item image="{{item.image}}" text="{{item.name}}" image-props="{{ {shape: 'circle'} }}" url="/pages/goods/list/index?categ={{item.value}}" />
         </block>
       </t-grid>
-      <!-- <video src="{{video}}"></video> 注释 -->
     </view>
   </scroll-view>
-</view>
+</view> -->

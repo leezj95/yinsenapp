@@ -10,9 +10,9 @@ Page({
         wx.navigateTo({ url: `/pages/goods/list/index?name=${ev.detail.value}` });
     },
     onLoad() {
-        wx.cloud.callFunction({ name: "ys_get_home_page_data" }).then(res => {
-            this.setData({ ...res.result })
-        })
+        // wx.cloud.callFunction({ name: "ys_get_home_page_data" }).then(res => {
+        //     this.setData({ ...res.result })
+        // })
     },
     onShow() {
         this.getTabBar().init();

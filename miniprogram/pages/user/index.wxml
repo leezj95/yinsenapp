@@ -12,7 +12,7 @@
         <t-icon name="service" size="48rpx" slot="note" />
       </t-cell>
       <t-cell hover arrow title="分类管理" bordered="{{false}}" t-class="t-cell-padding" url="/pages/sys/category-admin/add/index" />
-      <t-cell hover arrow title="物品管理" bordered="{{false}}" t-class="t-cell-padding" />
+      <t-cell hover arrow title="物品管理" bordered="{{false}}" t-class="t-cell-padding" url="/pages/sys/goods-admin/add/index" />
       <t-cell hover arrow title="编辑分类页面" bordered="{{false}}" t-class="t-cell-padding" url="/pages/sys/category-admin/edit-categ-page/index" />
       <t-cell hover arrow title="编辑首页页面" bordered="{{false}}" t-class="t-cell-padding" />
     </t-cell-group>

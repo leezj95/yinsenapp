@@ -1,5 +1,76 @@
+page {
+  background-color: #eee;
+}
+.form__item {
+  padding: 20rpx;
+}
+.form__item--tit {
+  font-size: 30rpx;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+}
+
+.form__item--tit::before {
+  content: "";
+  width: 15rpx;
+  height: 30rpx;
+  background-color: royalblue;
+  margin-right: 10rpx;
+  border-radius: 10rpx;
+}
+
+.form__btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50rpx;
+}
+
+.t-input--border:after {
+  left: var(--td-input-border-left-space, 0) !important;
+  right: var(--td-input-border-right-space, 0);
+}
+
+.t-cell {
+  padding: 10rpx 32rpx !important;
+}
+
+
+.list__box {
+  padding: 20rpx;
+}
+
+.t-input {
+  padding: 24rpx !important;
+}
+
+.t-upload__add-icon {
+  background-color: #fff;
+}
+
+.list__box-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+.t-grid  {
+  width: 83px !important;
+  border-radius: 20rpx;
+}
+.list__box-item-r {
+  width: calc(100% - 120px);
+}
+.add-btn {
+  padding: 40rpx;
+  border: 1px solid royalblue;
+}
+
+
 /* pages/sys/category-admin/edit-categ-page/index.wxss */
-.button-example {
+/* .button-example {
   margin: 32rpx;
 }
 .flex {
@@ -30,9 +101,8 @@
 
 .t-ipt-box {
   text-align: right;
-  /* border-bottom: 1px solid #e7e7e7; */
-}
-.t-ipt-box input {
+} */
+/* .t-ipt-box input {
   flex: 1;
 }
 
@@ -64,9 +134,9 @@
   position: absolute;
   left: 100px;
   top: 20rpx;
-}
+} */
 
-.add {
+/* .add {
   position: absolute;
   right: 0;
   top: 0;
@@ -81,4 +151,4 @@
 
 .upload .t-upload__close-btn {
   display: none;
-}
+} */

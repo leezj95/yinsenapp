@@ -1,51 +1,35 @@
-<!--pages/sys/category-admin/edit-categ-page/index.wxml-->
-<form bindreset="cleanInput">
-  <view class="t-ipt-box">
-    <view class="flex">
-      <text class="t-label">标题名称</text>
-      <input vlaue="{{title}}" placeholder="请输入(必填)" data-value="title" bindchange="changeIptName" />
+<view>
+  <form id="myForm" bindsubmit="onFormSubmit" bindreset="onFormReset">
+    <view class="form__item">
+      <view class="form__item--tit">标题信息</view>
+      <t-input value="{{title}}" placeholder="请输入标题" data-index="{{null}}" bindchange="changeIptTitle" />
+      <t-cell bordered="{{false}}" hover arrow note="{{assCateg.name || '点击选择分类'}}" data-index="{{null}}" bindtap="openPicker" />
     </view>
-    <view class="t-ipt-sub flex" data-value="assCateg" bindtap="openPicker">
-      <t-icon name="attach" size="28rpx" />
-      <text>{{assCateg.name}}</text>
-    </view>
-  </view>
 
-
-  <view class="t-sub-box">
-    <view class="tit">子集分类</view>
-    <view class="t-sub-item" wx:for="{{subItems}}" wx:key="index">
-      <t-upload class="upload" disabled max="{{1}}" files="{{[item.file]}}" />
-      <view class="t-sub-item-r">
-        <view>{{item.label}}</view>
-        <view class="t-ipt-sub flex">
-          <t-icon name="attach" size="28rpx" />
-          <text>{{item.assCateg.name}}</text>
+    <view class="list__box">
+      <view class="form__item--tit">下级信息</view>
+      <view wx:for="{{subItems}}" wx:key="index" class="list__box-item">
+        <t-upload mediaType="{{['image']}}" max="{{gridConfig.column}}" grid-config="{{gridConfig}}" data-index="{{index}}" files="{{item.files}}" bind:add="addCloudFile" bind:remove="removeCloudFile" />
+        <view class="list__box-item-r">
+          <t-input value="{{item.title}}" placeholder="请输入标题（必填）" data-index="{{index}}" bindchange="changeIptTitle" />
+          <t-cell bordered="{{false}}" hover arrow note="{{item.assCateg.name || '点击选择分类'}}" data-index="{{index}}" bindtap="openPicker" />
         </view>
+        <t-icon wx:if="{{index == subItems.length - 1}}" name="add-circle" size="45rpx" color="#c7c7c7" bindtap="clickAddSub" />
+        <t-icon wx:else name="minus-circle" size="45rpx" color="#c7c7c7" data-index="{{index}}" bindtap="clickMinusSub" />
       </view>
     </view>
 
-
-    <view class="t-uplaod-box">
-      <t-upload mediaType="{{['image']}}" max="{{1}}" files="{{spare.files}}" bind:add="cloudFile" bind:remove="removeCloudFile" />
-      <view class="t-ms-warp">
-        <input placeholder="请输入(必填)" data-value="spare.label" bindchange="changeIptName" />
-        <view class="t-ipt-sub flex" data-value="spare.assCateg" bindtap="openPicker">
-          <t-icon name="attach" size="28rpx" />
-          <text>{{spare.assCateg.name}}</text>
-        </view>
-      </view>
-      <button class="add" bindtap="clickAdd">添加</button>
+    <view class="form__btns">
+      <t-button type="reset" block>重置</t-button>
+      <t-button theme="primary" type="submit" block loading="{{loading}}">提交</t-button>
     </view>
-  </view>
+  </form>
 
-  <view class="button-example">
-    <t-button theme="primary" size="large" block bindtap="submit" loading="{{loading}}" data-value="title">提交保存</t-button>
-  </view>
-
-  <t-picker visible="{{visible}}" value="{{[assCateg._id]}}" keys="{{ {label: 'name', value: '_id'} }}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
-    <t-picker-item options="{{options}}" />
+  <t-picker visible="{{visible}}" value="{{[assCateg._id]}}" keys="{{ {label: 'name', value: '_id'} }}" cancelBtn="取消" confirmBtn="确认" bindchange="onChangePicker" bindpick="onColumnChange">
+    <t-picker-item style="margin: 0 20rpx;" options="{{categsL1}}" />
+    <t-picker-item style="margin: 0 20rpx;" options="{{categsL2}}" />
+    <t-picker-item style="margin: 0 20rpx;" options="{{categsL3}}" />
   </t-picker>
 
   <t-toast id="t-toast" />
-</form>
+</view>

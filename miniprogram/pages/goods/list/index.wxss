@@ -17,6 +17,10 @@ page {
   overflow: hidden;
 }
 
+.t-dropdown-item__footer {
+  justify-content: space-around;
+}
+
 .page_content-box {
   height: calc(100% - (env(safe-area-inset-bottom) + 85px));
   background-color: #fff;

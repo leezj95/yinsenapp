@@ -1,13 +1,13 @@
 {
+  "navigationBarTitleText": "添加商品",
   "usingComponents": {
+    "t-input": "tdesign-miniprogram/input/input",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-upload": "tdesign-miniprogram/upload/upload",
-    "t-button": "tdesign-miniprogram/button/button",
+    "t-cell": "tdesign-miniprogram/cell/cell",
     "t-picker": "tdesign-miniprogram/picker/picker",
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
-    "t-image": "tdesign-miniprogram/image/image",
-    "t-input": "tdesign-miniprogram/input/input",
-    "t-cell": "tdesign-miniprogram/cell/cell"
+    "t-button": "tdesign-miniprogram/button/button"
   }
 }

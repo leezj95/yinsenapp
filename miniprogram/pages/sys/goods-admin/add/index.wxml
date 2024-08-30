@@ -1,0 +1,33 @@
+<view class="container">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <t-cell title="关联分类" name="assCateg" hover arrow note="{{assCateg[assCateg.length - 1].name}}" bindtap="openPicker" />
+    <t-input label="商品名称" value="{{name}}" name="name" data-key="name" placeholder="请输入商品名称(必填)" bindchange="changeIpt" />
+    <!-- <t-input label="商品品牌" value="{{brand}}" name="brand" data-key="brand" placeholder="请输入商品品牌(必填)" bindchange="changeIpt" /> -->
+
+    <view class="upload__box" name="files">
+      <t-upload media-type="{{['image']}}" max="{{4}}" files="{{files}}" image-props="{{ { mode:'aspectFill' } }}" bind:add="cloudFile" bind:remove="removeCloudFile" />
+    </view>
+
+    <view class="table__boxs" name="tables">
+      <view class="table__boxs-row" wx:for="{{tables}}" wx:key="index">
+        <input class="table__boxs-row-label" name="input" placeholder="名称" value="{{item.label}}" data-index="{{index}}" data-key="label" bindchange="changetables" />
+        <input class="table__boxs-row-value" name="input" placeholder="参数" value="{{item.value}}" data-index="{{index}}" data-key="value" bindchange="changetables" />
+        <t-icon wx:if="{{index == tables.length - 1}}" name="add-circle" size="45rpx" color="#c7c7c7" bindtap="clickAddParam" />
+        <t-icon wx:else name="minus-circle" size="45rpx" color="#c7c7c7" data-index="{{index}}" bindtap="clickMinusParam" />
+      </view>
+    </view>
+
+    <view class="form__btns">
+      <t-button type="reset" block>重置</t-button>
+      <t-button theme="primary" type="submit" block loading="{{loading}}">提交</t-button>
+    </view>
+  </form>
+
+  <t-picker visible="{{visible}}" value="{{[assCateg._id]}}" keys="{{ {label: 'name', value: '_id'} }}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange">
+    <t-picker-item style="margin: 0 20rpx;" options="{{categsL1}}" />
+    <t-picker-item style="margin: 0 20rpx;" options="{{categsL2}}" />
+    <t-picker-item style="margin: 0 20rpx;" options="{{categsL3}}" />
+  </t-picker>
+
+  <t-toast id="t-toast" />
+</view>

@@ -1,0 +1,51 @@
+/* pages/sys/goods-admin/add/index.wxss */
+
+.box__tit {
+  font-weight: bold;
+  color: rgb(122, 121, 121);
+  margin-bottom: 50rpx;
+}
+
+.upload__box {
+  padding: 20rpx;
+}
+
+.table__boxs {
+  padding: 5px 0;
+}
+
+.table__boxs-row {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.table__boxs-row-label, .table__boxs-row-value {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.table__boxs-row-label {
+  width: 20%;
+}
+.table__boxs-row-value {
+  flex: 75%;
+  border-left: none;
+}
+
+.table__boxs-row .t-icon {
+  margin-left: 10px !important;
+}
+
+.form__btns {
+  display: flex;
+  margin-top: 50rpx;
+  justify-content: space-around;
+}
+
+.t-input--left {
+  text-align: right !important;
+}
+
+.t-cell::after, .t-input--border:after {
+  left: 0 !important;
+}

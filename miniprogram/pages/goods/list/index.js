@@ -21,6 +21,26 @@ function buildTree(data, parentId = null) {
   });
   return tree;
 }
+
+function getParentIds(list, id){
+  let temp = []
+  let forFn = function (arr, id) {
+      for (let i = 0; i < arr.length; i++) {
+          let item = arr[i]
+          if (item._id === id) {
+              forFn(list, item.p_id)
+              temp.push(item._id)
+              break
+          } else {
+              if (item.children) {
+                  forFn(item.children, id)
+              }
+          }
+      }
+  }
+  forFn(list, id)
+  return temp
+}
 Page({
   data: {
     prod: {
@@ -54,18 +74,17 @@ Page({
     })
   },
   /** 获取分类数据 */
-  async getCategData(val) {
+  async getCategData(categID) {
     const that = this;
     const res = await wx.cloud.callFunction({ name: "ys_get_categ", data: { level: "L" } });
-    if (res.result.data && res.result.data.length) {
-      const curItem = res.result.data.filter(item => item.value === val);
-      let newValue = val ? val.split("-") : [res.result.data[0].value];
-      for (let i = 0; i < newValue.length; i++) {
-        newValue[i] = newValue[i - 1] ? newValue[i - 1] + "-" + newValue[i] : newValue[i];
-      }
+    const { data } = res.result;
+    if (data && data.length) {
+      const tree = buildTree(data);
+      const parentIds = getParentIds(tree, categID);
+      const curItem = data.filter(item => item._id === categID);
       that.setData({
-        "categ.options": buildTree(res.result.data),
-        "categ.value": newValue,
+        "categ.options": tree,
+        "categ.value": parentIds,
         "categ.label": curItem.length ? curItem[0].name : "全部分类"
       });
     }
@@ -104,19 +123,20 @@ Page({
     const defaultName = options.name;
     const defaultCateg = options.categ;
     this.setData({ loading: true });
-    this.getTypeData("prod");
-    this.getTypeData("brand");
-    this.getCategData(defaultCateg).then(() => {
-      let params = {};
-      if (defaultName && defaultName != "") {
-        params = { name: defaultName };
-        const searchChild = this.selectComponent('#search-val');
-        searchChild.setData({ value: defaultName })
-      } else {
-        params = { dropdownMenu: [...this.data.categ.value] }
-      }
-      this.getGoodsList(0, params)
-    })
+    // this.getTypeData("prod");
+    // this.getTypeData("brand");
+    this.getCategData(defaultCateg)
+    // .then(() => {
+    //   let params = {};
+    //   if (defaultName && defaultName != "") {
+    //     params = { name: defaultName };
+    //     const searchChild = this.selectComponent('#search-val');
+    //     searchChild.setData({ value: defaultName })
+    //   } else {
+    //     params = { dropdownMenu: [...this.data.categ.value] }
+    //   }
+    //   this.getGoodsList(0, params)
+    // })
   },
   /** 页面上拉触底事件的处理函数 */
   onScrolltolower() {
@@ -146,18 +166,20 @@ Page({
   /** 树选择 */
   onChangeTree(ev) {
     const { level, value } = ev.detail;
-    const nextVal = value.splice(0, level + 1);
-    this.setData({ "categ.value": nextVal });
+    const categID = value[level];
+    const parentIds = getParentIds(this.data.categ.options, categID);
+    this.setData({ "categ.value": parentIds });
   },
   /** 树选择确认按钮 */
   onConfirmCateg(ev) {
     const { value, options } = this.data.categ;
-    const arr = treeToArr(options, [])
-    const filterArr = arr.filter(item => item.value == value[value.length - 1]);
+    const categID = this.data.categ.value[this.data.categ.value.length - 1];
+    const parallelArr = treeToArr(options, []);
+    const curItem = parallelArr.filter(item => item._id == categID);
+    this.setData({ "categ.label": curItem.length ? curItem[0].name : "全部分类", "categ.value": value });
     const searchChild = this.selectComponent('#search-val');
-    searchChild.setData({ value: "" })
-    this.setData({ "categ.label": filterArr.length ? filterArr[0].name : "全部分类" });
-    this.getGoodsList(0, { dropdownMenu: [...value, this.data.prod.value, this.data.brand.value] })
+    searchChild.setData({ value: "" });
+    // this.getGoodsList(0, { dropdownMenu: [...value, this.data.prod.value, this.data.brand.value] })
   },
   /** 树选择重置按钮 */
   onResetCateg(ev) {

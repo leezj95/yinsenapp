@@ -1,32 +1,71 @@
 /* pages/sys/add-category/index.wxss */
-
-.t-radio-group-wap {
-  padding: 30rpx 30rpx 0;
+page {
+  background-color: #eee;
 }
-
-.t-radio-wap {
-  margin-right: 20rpx;
+.form__item {
+  padding: 20rpx;
 }
-
-.button-example {
-  margin: 32rpx;
-}
-
-.t-radio-box, .t-ipt-box {
+.form__item--tit {
+  font-size: 30rpx;
+  font-weight: bolder;
   display: flex;
   align-items: center;
-  padding: 18px;
+  margin: 20rpx 0;
 }
 
-.t-label {
-  font-size: 18px;
-  margin-right: 18px;
+.form__item--tit::before {
+  content: "";
+  width: 15rpx;
+  height: 30rpx;
+  background-color: royalblue;
+  margin-right: 10rpx;
+  border-radius: 10rpx;
 }
 
-.t-ipt-box {
-  text-align: right;
-  border-bottom: 1px solid #e7e7e7;
+.form__btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50rpx;
 }
-.t-ipt-box input {
-  flex: 1;
+
+/* 单选框 begin */
+.radio__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.radio__card {
+  width: calc(100% / 3 - 30rpx);
+  position: relative;
+}
+
+.t-radio {
+  border-top-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+.radio__card-active {
+  border-color: var(--td-brand-color, royalblue);
+}
+
+.radio__card-active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  border-width: 28px 28px 28px 0;
+  border-style: solid;
+  border-color: var(--td-brand-color, royalblue) transparent transparent transparent;
+}
+
+.radio__card-icon-active {
+  color: var(--td-bg-color-container, #fff);
+  position: absolute;
+  left: 1.5px;
+  top: 1.5px;
+  z-index: 1000;
 }

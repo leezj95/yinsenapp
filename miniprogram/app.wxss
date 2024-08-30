@@ -8,3 +8,9 @@ page {
 .theme-bg {
   background-color: var(--themeColor);
 }
+
+.loading__box {
+  display: grid;
+  place-items: center;
+  margin-top: 20rpx;
+}

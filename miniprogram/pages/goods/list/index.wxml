@@ -1,14 +1,14 @@
 <view class="theme-bg">
   <search-bar id="search-val" bind:search="onSearchVal" />
   <t-dropdown-menu t-class="b-top-radius" arrow-icon="chevron-down-s">
-    <t-dropdown-item id="dropdown-prod" label="{{prod.label}}">
-      <t-radio-group icon="line" placement="right" value="{{prod.value}}" options="{{prod.options}}" data-key="prod" bind:change="onChangeRadio" />
+    <t-dropdown-item disabled id="dropdown-prod" label="{{prod.label}}">
+      <t-radio-group icon="line" placement="right" value="{{prod.value}}" options="{{prod.options}}" data-key="prod" bindchange="onChangeRadio" />
     </t-dropdown-item>
     <t-dropdown-item id="dropdown-categ" class="dropdown-item-fl" label="{{categ.label}}" value="{{categ.value}}" multiple bind:confirm="onConfirmCateg" bind:reset="onResetCateg">
-      <t-tree-select keys="{{ {label: 'name'} }}" options="{{categ.options}}" value="{{categ.value}}" bind:change="onChangeTree" />
+      <t-tree-select keys="{{ {label: 'name', value: '_id'} }}" options="{{categ.options}}" value="{{categ.value}}" bindchange="onChangeTree" />
     </t-dropdown-item>
-    <t-dropdown-item id="dropdown-brand" label="{{brand.label}}">
-      <t-radio-group icon="line" placement="right" value="{{brand.value}}" options="{{brand.options}}" data-key="brand" bind:change="onChangeRadio" />
+    <t-dropdown-item disabled id="dropdown-brand" label="{{brand.label}}">
+      <t-radio-group icon="line" placement="right" value="{{brand.value}}" options="{{brand.options}}" data-key="brand" bindchange="onChangeRadio" />
     </t-dropdown-item>
   </t-dropdown-menu>
 </view>
@@ -30,7 +30,7 @@
     </view>
   </view>
 
-  <t-loading loading="{{loading}}" theme="spinner" size="28rpx" text="加载中..." inheritColor />
+  <t-loading class="loading__box" loading="{{loading}}" theme="spinner" size="28rpx" text="加载中..." inheritColor />
   <t-divider wx:if="{{goodsList.length && !loading}}" content="{{finishedText}}" />
 
 
